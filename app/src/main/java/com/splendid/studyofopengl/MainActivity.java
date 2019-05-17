@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.widget.ImageView;
 
 import com.splendid.graphicsrender.IsoscelesTriangle;
+import com.splendid.graphicsrender.TextureLoadImgFilterRender;
 import com.splendid.graphicsrender.TextureLoadImgRender;
 import com.splendid.graphicsrender.Triangle;
 
@@ -21,9 +22,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         glSurfaceView = findViewById(R.id.glsurface_view);
         glSurfaceView.setEGLContextClientVersion(2);
-//        TextureLoadImgRender textureLoadImgRender = new TextureLoadImgRender();
-//        textureLoadImgRender.init(this);
-        glSurfaceView.setRenderer(new IsoscelesTriangle());
+        TextureLoadImgFilterRender textureLoadImgRender = new TextureLoadImgFilterRender();
+        textureLoadImgRender.init(this);
+        glSurfaceView.setRenderer(textureLoadImgRender);
         glSurfaceView.setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
 //        setContentView(glSurfaceView);
     }

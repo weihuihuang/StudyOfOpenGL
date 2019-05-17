@@ -17,9 +17,7 @@ import java.nio.FloatBuffer;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-import static android.opengl.GLES10.GL_CLAMP_TO_EDGE;
 import static android.opengl.GLES10.GL_LINEAR;
-import static android.opengl.GLES10.GL_LINEAR_MIPMAP_LINEAR;
 import static android.opengl.GLES10.GL_TEXTURE_MAG_FILTER;
 import static android.opengl.GLES10.GL_TEXTURE_WRAP_S;
 import static android.opengl.GLES10.GL_TEXTURE_WRAP_T;
@@ -27,12 +25,11 @@ import static android.opengl.GLES20.GL_MIRRORED_REPEAT;
 import static android.opengl.GLES20.GL_REPEAT;
 import static android.opengl.GLES20.GL_TEXTURE_2D;
 import static android.opengl.GLES20.GL_TEXTURE_MIN_FILTER;
-import static android.opengl.GLUtils.texImage2D;
 
 /**
- * Created by WeiHuiHuang on 2019/5/16.
+ * Created by WeiHuiHuang on 2019/5/16.  添加滤镜效果
  */
-public class TextureLoadImgRender implements GLSurfaceView.Renderer {
+public class TextureLoadImgFilterRender implements GLSurfaceView.Renderer {
 
     //顶点着色器和片元着色器
     private FloatBuffer sPosBuffer, sCoordBuffer;
@@ -191,7 +188,7 @@ public class TextureLoadImgRender implements GLSurfaceView.Renderer {
 
         //加载顶点着色器
         vertexShaderCode = "texture/textrueVertext.sh";
-        fragmentShaderCode = "texture/textrueFragment.sh";
+        fragmentShaderCode = "texture/textrueFilterFragment.sh";
         //创建一个空的OpenGLES程序
         mProgram = CommonUtil.createProgram(context.getResources(), vertexShaderCode, fragmentShaderCode);
 
