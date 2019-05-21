@@ -1,8 +1,8 @@
-package com.splendid.graphicsrender;
+package com.splendid.studyofopengl.render;
 
 import android.opengl.GLSurfaceView;
 
-import com.splendid.util.CommonUtil;
+import com.splendid.studyofopengl.OpenGlESUtil;
 
 import java.nio.FloatBuffer;
 
@@ -21,7 +21,7 @@ public class MyRender implements GLSurfaceView.Renderer {
     private FloatBuffer mBuffer;
 
     public MyRender(){
-        mBuffer = CommonUtil.getFloatBuffer(mArray);
+        mBuffer = OpenGlESUtil.getFloatBuffer(mArray);
     }
 
     @Override

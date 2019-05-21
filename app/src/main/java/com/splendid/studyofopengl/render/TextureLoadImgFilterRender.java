@@ -1,4 +1,4 @@
-package com.splendid.graphicsrender;
+package com.splendid.studyofopengl.render;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -8,7 +8,7 @@ import android.opengl.GLSurfaceView;
 import android.opengl.GLUtils;
 import android.opengl.Matrix;
 
-import com.splendid.util.CommonUtil;
+import com.splendid.studyofopengl.OpenGlESUtil;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -190,7 +190,7 @@ public class TextureLoadImgFilterRender implements GLSurfaceView.Renderer {
         vertexShaderCode = "texture/textrueVertext.sh";
         fragmentShaderCode = "texture/textrueFilterFragment.sh";
         //创建一个空的OpenGLES程序
-        mProgram = CommonUtil.createProgram(context.getResources(), vertexShaderCode, fragmentShaderCode);
+        mProgram = OpenGlESUtil.createProgram(context.getResources(), vertexShaderCode, fragmentShaderCode);
 
         glHPosition = GLES20.glGetAttribLocation(mProgram, "vPosition");
 

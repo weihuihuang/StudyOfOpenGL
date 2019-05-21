@@ -1,4 +1,4 @@
-package com.splendid.util;
+package com.splendid.studyofopengl;
 
 import android.app.ActivityManager;
 import android.content.Context;
@@ -6,7 +6,6 @@ import android.content.pm.ConfigurationInfo;
 import android.content.res.Resources;
 import android.opengl.GLES20;
 import android.os.Build;
-import android.util.Log;
 
 import java.io.InputStream;
 import java.nio.ByteBuffer;
@@ -16,7 +15,7 @@ import java.nio.FloatBuffer;
 /**
  * Created by WeiHuiHuang on 2019/5/14.
  */
-public class CommonUtil {
+public class OpenGlESUtil {
 
     private static final int GLES_VERSION_2 = 0x2000;
 

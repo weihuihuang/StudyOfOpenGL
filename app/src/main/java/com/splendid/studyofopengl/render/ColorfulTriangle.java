@@ -1,4 +1,4 @@
-package com.splendid.graphicsrender;
+package com.splendid.studyofopengl.render;
 
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
