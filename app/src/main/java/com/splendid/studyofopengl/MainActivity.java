@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         glSurfaceView = findViewById(R.id.glsurface_view);
         glSurfaceView.setEGLContextClientVersion(2);
-        PartOfFilterRender partOfFilterRender = new PartOfFilterRender();
+        TextureLoadImgRender partOfFilterRender = new TextureLoadImgRender();
         partOfFilterRender.init(this);
         glSurfaceView.setRenderer(partOfFilterRender);
         glSurfaceView.setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);

@@ -83,7 +83,7 @@ public class PartOfFilterRender implements GLSurfaceView.Renderer {
         this.context = context;
         //加载图片
         try {
-            bitmap = BitmapFactory.decodeStream(context.getResources().getAssets().open("texture/cat.png"));
+            bitmap = BitmapFactory.decodeStream(context.getResources().getAssets().open("texture/test.png"));
         } catch (Exception ignore) {
             ignore.printStackTrace();
         }
