@@ -17,18 +17,18 @@ import javax.microedition.khronos.opengles.GL10;
 public class ColorfulTriangle implements GLSurfaceView.Renderer {
 
     //缓冲区
-    private FloatBuffer floatBuffer,colorBuffer;
+    private FloatBuffer floatBuffer, colorBuffer;
 
     //顶点着色器,gl_Position是Shader的内置变量，表示顶点位置
     //vMatrix是变换矩阵，矩阵不满足乘法交换律所以乘法不能写反
     private final String vertexShaderCode =
             "attribute vec4 vPosition;" +
                     "uniform mat4 vMatrix;" +
-                    "varying  vec4 vColor;"+
-                    "attribute vec4 aColor;"+
+                    "varying  vec4 vColor;" +
+                    "attribute vec4 aColor;" +
                     "void main() {" +
                     "  gl_Position = vMatrix*vPosition;" +
-                    "  vColor=aColor;"+
+                    "  vColor=aColor;" +
                     "}";
 
     //片元着色器，gl_FragColor 是内置变量，表示片元颜色
@@ -44,7 +44,7 @@ public class ColorfulTriangle implements GLSurfaceView.Renderer {
     static final int COORDS_PER_VERTEX = 3;
 
     static float triangleCoords[] = {
-            0.5f,  0.5f, 0.0f, // top
+            0.5f, 0.5f, 0.0f, // top
             -0.5f, -0.5f, 0.0f, // bottom left
             0.5f, -0.5f, 0.0f  // bottom right
     };
@@ -52,9 +52,9 @@ public class ColorfulTriangle implements GLSurfaceView.Renderer {
     private int mPositionHandle;
     private int mColorHandle;
 
-    private float[] mViewMatrix=new float[16];
-    private float[] mProjectMatrix=new float[16];
-    private float[] mMVPMatrix=new float[16];
+    private float[] mViewMatrix = new float[16];
+    private float[] mProjectMatrix = new float[16];
+    private float[] mMVPMatrix = new float[16];
 
     //顶点个数
     private final int vertexCount = triangleCoords.length / COORDS_PER_VERTEX;
@@ -65,7 +65,7 @@ public class ColorfulTriangle implements GLSurfaceView.Renderer {
 
     //设置颜色
     float color[] = {
-            0.0f, 1.0f, 0.0f, 1.0f ,
+            0.0f, 1.0f, 0.0f, 1.0f,
             1.0f, 0.0f, 0.0f, 1.0f,
             0.0f, 0.0f, 1.0f, 1.0f
     };
@@ -109,13 +109,13 @@ public class ColorfulTriangle implements GLSurfaceView.Renderer {
         //设置视图窗口
         GLES20.glViewport(0, 0, width, height);
         //计算宽高比
-        float ratio=(float)width/height;
+        float ratio = (float) width / height;
         //设置透视投影
         Matrix.frustumM(mProjectMatrix, 0, -ratio, ratio, -1, 1, 3, 7);
         //设置相机位置
         Matrix.setLookAtM(mViewMatrix, 0, 0, 0, 7.0f, 0f, 0f, 0f, 0f, 1.0f, 0.0f);
         //计算变换矩阵
-        Matrix.multiplyMM(mMVPMatrix,0,mProjectMatrix,0,mViewMatrix,0);
+        Matrix.multiplyMM(mMVPMatrix, 0, mProjectMatrix, 0, mViewMatrix, 0);
     }
 
     @Override
@@ -125,9 +125,9 @@ public class ColorfulTriangle implements GLSurfaceView.Renderer {
         GLES20.glUseProgram(mProgram);
 
         //获取变换矩阵vMatrix成员句柄
-        mMatrixHandler= GLES20.glGetUniformLocation(mProgram,"vMatrix");
+        mMatrixHandler = GLES20.glGetUniformLocation(mProgram, "vMatrix");
         //指定vMatrix的值
-        GLES20.glUniformMatrix4fv(mMatrixHandler,1,false,mMVPMatrix,0);
+        GLES20.glUniformMatrix4fv(mMatrixHandler, 1, false, mMVPMatrix, 0);
 
         //获取顶点着色器的vPosition成员句柄
         mPositionHandle = GLES20.glGetAttribLocation(mProgram, "vPosition");
@@ -141,9 +141,9 @@ public class ColorfulTriangle implements GLSurfaceView.Renderer {
         mColorHandle = GLES20.glGetAttribLocation(mProgram, "aColor");
         //设置绘制三角形的颜色
         GLES20.glEnableVertexAttribArray(mColorHandle);
-        GLES20.glVertexAttribPointer(mColorHandle,4,
-                GLES20.GL_FLOAT,false,
-                0,colorBuffer);
+        GLES20.glVertexAttribPointer(mColorHandle, 4,
+                GLES20.GL_FLOAT, false,
+                0, colorBuffer);
         //绘制三角形
         GLES20.glDrawArrays(GLES20.GL_TRIANGLES, 0, vertexCount);
         //禁止顶点数组的句柄
